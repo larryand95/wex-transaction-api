@@ -1,0 +1,9 @@
+# Gradle operational files and local caches
+.gradle/
+build/
+
+# Visual Studio Code files
+.vscode
+
+# Mac specific files/directories
+.DS_Store
