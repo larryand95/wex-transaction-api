@@ -6,7 +6,7 @@ A Spring Boot REST API for storing and retrieving purchase transactions with cur
 
 - Java 25
 - Docker & Docker Compose (for local development with PostgreSQL)
-- Gradle 8.12 (via wrapper)
+- Gradle 9.5.1 (via wrapper)
 
 ## Project Structure
 
@@ -138,7 +138,7 @@ The `country` and `currency` parameters must match values from the [Treasury Rep
 | Mapping | MapStruct |
 | API Docs | SpringDoc OpenAPI (Swagger) |
 | Testing | JUnit 5, Mockito, Testcontainers |
-| Build | Gradle 8.12 |
+| Build | Gradle 9.5.1 |
 
 ## Environment Variables
 
