@@ -1,9 +1,22 @@
-# Gradle operational files and local caches
 .gradle/
 build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
 
-# Visual Studio Code files
-.vscode
+*.class
+*.log
+*.jar
+!gradle/wrapper/gradle-wrapper.jar
 
-# Mac specific files/directories
+.vscode/
+.idea/
+*.iml
+*.iws
+*.ipr
 .DS_Store
+out/
+bin/
+
+*.env
+.env.local

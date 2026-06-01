@@ -1,0 +1,17 @@
+spring:
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+treasury:
+  api:
+    base-url: http://localhost:${MOCK_SERVER_PORT:8089}
+    connection-timeout-ms: 3000
+    read-timeout-ms: 5000
+
+logging:
+  level:
+    com.wexinc.transaction: DEBUG
+    org.flywaydb: INFO
