@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '3.4.5'
+    id 'org.springframework.boot' version '3.5.14'
     id 'io.spring.dependency-management' version '1.1.7'
     id 'org.flywaydb.flyway' version '11.8.0'
     id 'jacoco'
@@ -91,6 +91,30 @@ jacocoTestReport {
     }
 }
 
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            // Enforce minimum 80% line coverage on the entire project
+            limit {
+                counter = 'LINE'
+                value   = 'COVEREDRATIO'
+                minimum = 0.80
+            }
+        }
+        rule {
+            // Enforce per-class: each class must have 70%+ branch coverage
+            element = 'CLASS'
+            limit {
+                counter = 'BRANCH'
+                value   = 'COVEREDRATIO'
+                minimum = 0.70
+            }
+            // Exclude trivial classes from per-class rule
+            excludes = ['com.wexinc.transaction.entity.*', 'com.wexinc.transaction.model.*']
+        }
+    }
+}
+
 jacoco {
-    toolVersion = "0.8.12"
+    toolVersion = "0.8.14"
 }
