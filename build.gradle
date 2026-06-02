@@ -110,7 +110,7 @@ jacocoTestCoverageVerification {
                 minimum = 0.70
             }
             // Exclude trivial classes from per-class rule
-            excludes = ['com.wexinc.transaction.entity.*', 'com.wexinc.transaction.model.*']
+            excludes = ['com.wexinc.transaction.domain.entity.*', 'com.wexinc.transaction.domain.model.*']
         }
     }
 }
