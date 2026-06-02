@@ -1,7 +1,6 @@
 package com.wexinc.transaction.config;
 
 import io.swagger.v3.oas.models.OpenAPI;
-import io.swagger.v3.oas.models.info.Contact;
 import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.info.License;
 import org.springframework.context.annotation.Bean;
@@ -17,9 +16,6 @@ public class OpenApiConfig {
                         .title("WEX Transaction API")
                         .description("API for storing and retrieving purchase transactions with currency conversion support via US Treasury exchange rates.")
                         .version("1.0.0")
-                        .contact(new Contact()
-                                .name("WEX Inc.")
-                                .url("https://www.wexinc.com"))
                         .license(new License()
                                 .name("Proprietary")));
     }
