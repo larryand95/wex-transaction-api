@@ -16,20 +16,5 @@ services:
       timeout: 5s
       retries: 5
 
-  app:
-    build: .
-    container_name: wex-transaction-api
-    depends_on:
-      postgres:
-        condition: service_healthy
-    environment:
-      DB_HOST: postgres
-      DB_PORT: 5432
-      DB_NAME: transaction_db
-      DB_USERNAME: transaction_user
-      DB_PASSWORD: transaction_pass
-    ports:
-      - "8080:8080"
-
 volumes:
   postgres_data:
