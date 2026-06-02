@@ -8,6 +8,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.util.UriComponentsBuilder;
 import reactor.core.publisher.Mono;
 
+import java.net.URI;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Optional;
@@ -17,14 +18,16 @@ import java.util.Optional;
 public class TreasuryExchangeRateClient {
 
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-    private static final String RATES_ENDPOINT = "/v1/accounting/od/rates_of_exchange";
+    private static final String RATES_ENDPOINT = "/services/api/fiscal_service/v1/accounting/od/rates_of_exchange";
 
     private final WebClient webClient;
+    private final String baseUrl;
 
     public TreasuryExchangeRateClient(
             WebClient.Builder webClientBuilder,
             @Value("${treasury.api.base-url:https://api.fiscaldata.treasury.gov}") String baseUrl) {
-        this.webClient = webClientBuilder.baseUrl(baseUrl).build();
+        this.webClient = webClientBuilder.build();
+        this.baseUrl = baseUrl;
     }
 
     /**
@@ -45,14 +48,13 @@ public class TreasuryExchangeRateClient {
 
         log.debug("Fetching exchange rate for country={}, currency={}, date={}", country, currency, purchaseDate);
 
-        String uri = UriComponentsBuilder.fromPath(RATES_ENDPOINT)
+        URI uri = UriComponentsBuilder.fromHttpUrl(baseUrl + RATES_ENDPOINT)
                 .queryParam("fields", "country,currency,exchange_rate,record_date,effective_date")
                 .queryParam("filter", filterParam)
                 .queryParam("sort", "-record_date")
-                .queryParam("page[size]", "1")
-                .build()
-                .encode()
-                .toUriString();
+                .queryParam("page%5Bsize%5D", "1")
+                .build(true)
+                .toUri();
 
         TreasuryExchangeRateResponse response = webClient.get()
                 .uri(uri)
