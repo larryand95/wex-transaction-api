@@ -51,6 +51,7 @@ public class TreasuryExchangeRateClient {
                 .queryParam("sort", "-record_date")
                 .queryParam("page[size]", "1")
                 .build()
+                .encode()
                 .toUriString();
 
         TreasuryExchangeRateResponse response = webClient.get()

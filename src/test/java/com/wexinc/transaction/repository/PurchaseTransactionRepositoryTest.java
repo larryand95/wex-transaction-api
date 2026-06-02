@@ -42,7 +42,7 @@ class PurchaseTransactionRepositoryTest {
                 .purchaseAmount(new BigDecimal("123.45"))
                 .build();
 
-        PurchaseTransaction saved = repository.save(transaction);
+        PurchaseTransaction saved = repository.saveAndFlush(transaction);
 
         assertThat(saved.getId()).isNotNull();
         assertThat(saved.getCreatedAt()).isNotNull();

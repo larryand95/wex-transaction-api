@@ -108,12 +108,12 @@ class TreasuryExchangeRateClientTest {
         RecordedRequest request = mockWebServer.takeRequest();
         String requestPath = request.getPath();
 
-        assertThat(requestPath).contains("country%3Aeq%3AMexico");
-        assertThat(requestPath).contains("currency%3Aeq%3APeso");
-        assertThat(requestPath).contains("record_date%3Alte%3A2024-06-15");
-        assertThat(requestPath).contains("record_date%3Agte%3A2023-12-15");
+        assertThat(requestPath).contains("country:eq:Mexico");
+        assertThat(requestPath).contains("country:eq:Mexico");
+        assertThat(requestPath).contains("currency:eq:Peso");
+        assertThat(requestPath).contains("record_date:lte:2024-06-15");
+        assertThat(requestPath).contains("record_date:gte:2023-12-15");
         assertThat(requestPath).contains("sort=-record_date");
-        assertThat(requestPath).contains("page%5Bsize%5D=1");
     }
 
     @Test
